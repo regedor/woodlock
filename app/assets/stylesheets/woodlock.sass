@@ -1,0 +1,67 @@
+// https://github.com/maxim/bootswatch-rails
+// Override variables - First set or import your overrides
+// $textColor: #000;
+// Then load variables
+// @import "bootswatch/journal/variables";
+
+//Included bootswatches
+  //Amelia
+  //Cerulean
+  //Cosmo
+  //Cyborg
+  //Darkly
+  //Flatly
+  //Journal
+  //Lumen
+  //Paper
+  //Readable
+  //Sandstone
+  //Simplex
+  //Slate
+  //Spacelab
+  //Superhero
+  //United
+  //Yeti
+
+@import 'bootstrap-sprockets'
+$textColor: #FFF
+@import "bootswatch/spacelab/variables"
+@import 'bootstrap'
+@import "bootswatch/spacelab/bootswatch"
+
+//////////////////// custom bootstrap
+
+//div.well-opacity
+//  background-color: rgba(245, 245, 245, 0.6)
+
+div.well-opacity
+  background-color: rgba(30, 30, 30, 0.3)
+
+em, h4
+  color: #FFF
+
+//////////////////// custom bootstrap
+
+body
+  // http://bgfons.com/upload/wood%20_texture553.jpg
+  background: url(/woodlock-background.jpg) no-repeat center center fixed
+  background-size: cover
+
+hr.login-divider
+  border-top: 1px solid black
+  opacity: .15
+
+img.auth-logo
+  width: 300px
+  height: 48px
+  margin-bottom: 25px
+
+.width-100per
+  width: 100%
+
+.m-bottom-15px
+  margin-bottom: 15px
+
+div.container-margin-top
+  margin-top: 20px
+

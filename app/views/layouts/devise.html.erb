@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Woodlock</title>
+  <%= stylesheet_link_tag    'woodlock', media: 'all' %>
+  <%= javascript_include_tag 'woodlock', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/facebook_oauth_script' %>
+  <div class="container container-margin-top">
+    <%= raw display_woodlock_flash_messages %>
+    <%= yield %>
+  </div>
+</body>
+</html>

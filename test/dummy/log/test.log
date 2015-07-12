@@ -1,0 +1,333 @@
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "active_admin_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_id" varchar NOT NULL, "resource_type" varchar NOT NULL, "author_id" integer, "author_type" varchar, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+
+  [1m[36m (0.7ms)[0m  [1mCREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "provider" varchar, "uid" varchar, "first_name" varchar, "last_name" varchar) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150623094348')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "admin_users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at", "id") VALUES ('miguelregedor@mail.com', '$2a$04$hs2KVC0bMNgc15Ln1gT8CuHEd3Y9xPnfbifK4dQUWWhWCwlY2pf9K', '2015-07-12 10:33:25', '2015-07-12 10:33:25', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at", "id") VALUES ('miguelfernandes@mail.com', '$2a$04$E03sJ/83QDqzEsfWulpZxuyHq1zqHdW3wply5TCTE14TxQb/ArpOe', '2015-07-12 10:33:25', '2015-07-12 10:33:25', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name", "confirmed_at", "created_at", "updated_at", "id") VALUES ('miguelregedor@mail.com', '$2a$04$BUXM519sr2wrfvjhlyVwRuPRrODXxFgakWw8WFD8MWlDBq4RLDHai', 'Miguel', 'Regedor', '2015-07-11', '2015-07-12 10:33:25', '2015-07-12 10:33:25', 486269248)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name", "confirmed_at", "created_at", "updated_at", "id") VALUES ('miguelfernandes@mail.com', '$2a$04$IjvVpB/6na7ObD/IJF15C.llx.3.hkZN.iuTxdbTIFpsSJ1eYGp5a', 'Miguel', 'Fernandes', '2015-07-11', '2015-07-12 10:33:25', '2015-07-12 10:33:25', 835799948)
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------
+WoodlockTest: test_truth
+------------------------
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------------------------------------------
+RegisterUserWithSiteFlowTest: test_should_deny_login_without_confirmation
+-------------------------------------------------------------------------
+Started GET "/sign_up" for 127.0.0.1 at 2015-07-12 12:33:25 +0200
+Processing by RegistrationsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/shared/_display_devise_error_messages.html.erb (2.1ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/registrations/new.html.erb within layouts/devise (14.5ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.6ms)
+Completed 200 OK in 6545ms (Views: 6529.6ms | ActiveRecord: 0.0ms)
+Started POST "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:31 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"John", "last_name"=>"Doe", "email"=>"johndoe@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "locale"=>"en"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'johndoe@mail.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["confirmation_token", "0267f2ff94ea1ffab1bbee9b4806af2ac12e077eb0730d5215cf3f5aad5285b1"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "John"], ["last_name", "Doe"], ["email", "johndoe@mail.com"], ["encrypted_password", "$2a$04$FYpYzYhftrmnq7q6h/K.p.hbg.kGfiN9RrA7zxFyP2Zo5/j7GO12a"], ["created_at", "2015-07-12 10:33:31.755182"], ["updated_at", "2015-07-12 10:33:31.755182"], ["confirmation_token", "0267f2ff94ea1ffab1bbee9b4806af2ac12e077eb0730d5215cf3f5aad5285b1"], ["confirmation_sent_at", "2015-07-12 10:33:31.974578"]]
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/mailer/confirmation_instructions.html.erb (1.7ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 139.2ms
+
+Sent mail to johndoe@mail.com (8.6ms)
+Date: Sun, 12 Jul 2015 12:33:32 +0200
+From: info@woodlock.com
+Reply-To: info@woodlock.com
+To: johndoe@mail.com
+Message-ID: <55a2427c1f3a7_65ad3fdb9886020090792@localhost.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome johndoe@mail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/confirmation?confirmation_token=MVsRqVoK9ryEo14z1hMm">Confirm my account</a></p>
+
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/?locale=en
+Completed 302 Found in 409ms (ActiveRecord: 0.8ms)
+Started GET "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (6.4ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.0ms)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+Started POST "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"johndoe@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "johndoe@mail.com"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.3ms)
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (2.1ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------------------------------
+RegisterUserWithSiteFlowTest: test_should_deny_sign_in_with_wrong_credentials
+-----------------------------------------------------------------------------
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (1.9ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started POST "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"miguelfernandes@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "miguelfernandes@mail.com"]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.1ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"miguelfernandes@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (1.8ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.0ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"wrong_email@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "wrong_email@mail.com"]]
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.1ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"wrong_email@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (2.5ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+----------------------------------------------------------------------------------------------------
+RegisterUserWithSiteFlowTest: test_should_sign_in_a_new_user_after_confirming_registration_via_email
+----------------------------------------------------------------------------------------------------
+Started GET "/sign_up" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by RegistrationsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/shared/_display_devise_error_messages.html.erb (0.1ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/registrations/new.html.erb within layouts/devise (2.1ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+Started POST "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"John", "last_name"=>"Doe", "email"=>"johndoe@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up", "locale"=>"en"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'johndoe@mail.com' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["confirmation_token", "722b0bc868e6db06af62cc9eb969ff69d7e4466396b8cf71fc0625656f3bf9c4"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["first_name", "John"], ["last_name", "Doe"], ["email", "johndoe@mail.com"], ["encrypted_password", "$2a$04$p6burZg7Ef2.X550eGJ5OeYa4jzu1l/llwBrsxpERpg7sBLKzQMEa"], ["created_at", "2015-07-12 10:33:32.264567"], ["updated_at", "2015-07-12 10:33:32.264567"], ["confirmation_token", "722b0bc868e6db06af62cc9eb969ff69d7e4466396b8cf71fc0625656f3bf9c4"], ["confirmation_sent_at", "2015-07-12 10:33:32.265654"]]
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/mailer/confirmation_instructions.html.erb (0.5ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 2.1ms
+
+Sent mail to johndoe@mail.com (2.4ms)
+Date: Sun, 12 Jul 2015 12:33:32 +0200
+From: info@woodlock.com
+Reply-To: info@woodlock.com
+To: johndoe@mail.com
+Message-ID: <55a2427c42160_65ad3fdb9886020090844@localhost.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome johndoe@mail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/confirmation?confirmation_token=A7kACUywv_p8ZHyyYFtu">Confirm my account</a></p>
+
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/?locale=en
+Completed 302 Found in 14ms (ActiveRecord: 0.6ms)
+Started GET "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (3.8ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+Started GET "/confirmation?confirmation_token=A7kACUywv_p8ZHyyYFtu" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"A7kACUywv_p8ZHyyYFtu"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "722b0bc868e6db06af62cc9eb969ff69d7e4466396b8cf71fc0625656f3bf9c4"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2015-07-12 10:33:32.298361"], ["updated_at", "2015-07-12 10:33:32.298930"], ["id", 835799949]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://localhost:3000/sign_in?locale=en
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+Started GET "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (3.3ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (2.1ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+Started POST "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"johndoe@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "johndoe@mail.com"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2015-07-12 10:33:32.328585"], ["current_sign_in_at", "2015-07-12 10:33:32.328585"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-07-12 10:33:32.329628"], ["id", 835799949]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/?locale=en
+Completed 302 Found in 14ms (ActiveRecord: 0.5ms)
+Started GET "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 835799949]]
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 124ms (Views: 121.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------------------------------
+RegisterUserWithSiteFlowTest: test_should_sign_in_an_existing_user
+------------------------------------------------------------------
+Started GET "/sign_in" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/devise/sessions/new.html.erb within layouts/devise (3.6ms)
+  Rendered /Users/regedor/Dropbox/Projects/Gems/woodlock/app/views/layouts/_facebook_oauth_script.html (0.1ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+Started POST "/sign_in?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"miguelregedor@mail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "miguelregedor@mail.com"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-07-12 10:33:32.493124"], ["current_sign_in_at", "2015-07-12 10:33:32.493124"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-07-12 10:33:32.494230"], ["id", 486269248]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/?locale=en
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms)
+Started GET "/?locale=en" for 127.0.0.1 at 2015-07-12 12:33:32 +0200
+Processing by HomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 486269248]]
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------------------------------------------------------------------------
+UserTest: test_: User should not allow last_name to be set to any of ["1fernandes", "miguel fernandes", "@fernandes"]. 
+-----------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------------------------
+UserTest: test_: User should ensure last_name has a length of at most 30. 
+--------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------------
+UserTest: test_: User should require first_name to be set. 
+-----------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------
+UserTest: test_: User should require email to be set. 
+------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------------
+UserTest: test_: User should require last_name to be set. 
+----------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------
+UserTest: test_: User should ensure first_name has a length of at most 30. 
+---------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------------------------------------------------------------
+UserTest: test_: User should not allow first_name to be set to any of ["1miguel", "miguel duarte", "@miguel"]. 
+---------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------------------------------------------------------
+UserTest: test_: User should not allow email to be set to any of ["test@test", "test@", "@test.com"]. 
+------------------------------------------------------------------------------------------------------
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@test' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------
+UserTest: test_should_return_full_name
+--------------------------------------
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 835799948]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------------------
+AdminUserTest: test_: AdminUser should require email to be set. 
+----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------------------------------------------------------------------
+AdminUserTest: test_: AdminUser should not allow email to be set to any of ["test@test", "test@", "@test.com"]. 
+----------------------------------------------------------------------------------------------------------------
+  [1m[35mAdminUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'test@test' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
