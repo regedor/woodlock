@@ -1,5 +1,6 @@
 # Woodlock
 
+
 Woodlock is an authentication and user management engine using *devise* and *active admin*.
 
 This project rocks and uses MIT-LICENSE.
