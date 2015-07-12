@@ -93,6 +93,8 @@ GEM
     capybara-email (2.4.0)
       capybara (~> 2.4)
       mail
+    codeclimate-test-reporter (0.4.7)
+      simplecov (>= 0.7.1, < 1.0.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -108,6 +110,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    docile (1.1.5)
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
@@ -220,6 +223,11 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sprockets (3.2.0)
       rack (~> 1.0)
     sprockets-rails (2.3.1)
@@ -247,6 +255,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.4.4)
   capybara-email (~> 2.4.0)
+  codeclimate-test-reporter
   minitest (~> 5.7.0)
   shoulda (~> 3.5.0)
   sqlite3
@@ -254,4 +263,4 @@ DEPENDENCIES
   woodlock!
 
 BUNDLED WITH
-   1.10.4
+   1.10.5

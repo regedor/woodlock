@@ -37,4 +37,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara', '~> 2.4.4' 
   s.add_development_dependency 'capybara-email', '~> 2.4.0'
   s.add_development_dependency 'shoulda', '~> 3.5.0' 
+  s.add_development_dependency 'codeclimate-test-reporter'
 end
