@@ -1,5 +1,5 @@
 # Woodlock
-
+[![Build Status](https://travis-ci.org/regedor/woodlock.svg?branch=master)](https://travis-ci.org/regedor/woodlock)
 
 Woodlock is an authentication and user management engine using *devise* and *active admin*.
 
