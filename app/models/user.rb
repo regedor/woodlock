@@ -15,9 +15,16 @@ class User < ActiveRecord::Base
                     format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
 
   def self.find_or_create_with_oauth(auth)
-    User.where(provider: auth.provider, uid: auth.uid).first ||
-    User.where(email: auth.info.email).first ||
-    User.create(first_name: auth.info.first_name ,last_name: auth.info.last_name ,provider: auth.provider, uid: auth.uid, email: auth.info.email, password: Devise.friendly_token[0,20])
+    stored_user = User.where(provider: auth.provider, uid: auth.uid).first || User.where(email: auth.info.email).first
+
+    if stored_user
+      stored_user
+    else
+      user = User.new(first_name: auth.info.first_name ,last_name: auth.info.last_name ,provider: auth.provider, uid: auth.uid, email: auth.info.email, password: Devise.friendly_token[0,20])
+      user.skip_confirmation!
+      user.save!
+      user
+    end
   end
 
   def full_name
