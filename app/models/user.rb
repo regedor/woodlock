@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
       user = User.new(first_name: auth.info.first_name ,last_name: auth.info.last_name ,provider: auth.provider, uid: auth.uid, email: auth.info.email, password: Devise.friendly_token[0,20])
       user.skip_confirmation!
       user.save!
+      WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver
       user
     end
   end
