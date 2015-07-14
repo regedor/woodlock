@@ -1,10 +1,5 @@
 class WoodlockWelcomeMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.woodlock_welcome.omniauth_welcome.subject
-  #
   def omniauth_welcome(user, provider)
     case provider
       when 'google_oauth2' then provider_name = 'Google'
