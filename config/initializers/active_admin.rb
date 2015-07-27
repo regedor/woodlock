@@ -1,6 +1,7 @@
 ActiveAdmin.setup do |config|
   #
-  #
+  config.skip_before_filter :authenticate_user!
+
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
       menu.add label: "Languages" do |lang|

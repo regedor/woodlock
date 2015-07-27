@@ -11,14 +11,17 @@ require 'jquery-rails'
 require 'cancan'
 require 'devise'
 require 'execjs'
-#require 'sqlite3'
 require 'pg'
-require 'thin'
-require 'shoulda'
-require 'minitest'
-require 'capybara'
-require 'capybara-email'
 require 'activeadmin'
+
+if Rails.env.development? || Rails.env.test?
+  require 'thin'
+  require 'sqlite3'
+  require 'shoulda'
+  require 'minitest'
+  require 'capybara'
+  require 'capybara-email'
+end
 
 module Woodlock
   class Engine < ::Rails::Engine
