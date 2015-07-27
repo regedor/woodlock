@@ -31,7 +31,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise', '~> 3.5.1'
   s.add_dependency 'execjs', '~> 2.5.2'
 
-  s.add_development_dependency "sqlite3"
+  #s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pg"
   s.add_development_dependency 'thin', '~> 1.6.3'
   s.add_development_dependency 'minitest', '~> 5.7.0'
   s.add_development_dependency 'capybara', '~> 2.4.4' 
