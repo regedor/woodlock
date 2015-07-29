@@ -8,6 +8,6 @@ class WoodlockWelcomeMailer < ApplicationMailer
 
     @greeting = "Hi #{user.first_name}! Thanks for registering with #{provider_name}."
 
-    mail to: user.email, subject: "#{provider_name} registration success"
+    mail to: user.email, subject: "Apiflat registration success"
   end
 end
