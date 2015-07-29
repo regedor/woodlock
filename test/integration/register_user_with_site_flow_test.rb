@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class RegisterUserWithSiteFlowTest < ActionDispatch::IntegrationTest
-
   test 'should sign in an existing user' do
     visit new_user_session_path
     fill_in 'user_email', with: 'miguelregedor@mail.com'
@@ -58,5 +57,5 @@ class RegisterUserWithSiteFlowTest < ActionDispatch::IntegrationTest
     click_button 'Sign in'
     assert page.has_content? 'Sign out'
   end
-  
+
 end
