@@ -10,11 +10,9 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true,
                          length: { maximum: 30 },
-                         format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
 
   validates :last_name, presence: true,
                         length: { maximum: 30 },
-                        format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
 
   validates :email, presence: true,
                     format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
