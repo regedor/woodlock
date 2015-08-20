@@ -1,0 +1,34 @@
+#default
+#https://github.com/bbatsov/ruby-style-guide
+#https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+#other style guides
+#https://github.com/thoughtbot/guides/tree/master/style#ruby
+#https://github.com/styleguide/ruby
+
+AllCops:
+  RunRailsCops: true
+  Include:
+      - '**/Rakefile'
+      - '**/config.ru'
+  Exclude:
+    - 'test/dummy/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Documentation:
+    Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes #double_quotes
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19 #hash_rockets
+
+Style/DotPosition:
+  EnforcedStyle: leading #trailing
+
+Style/SignalException:
+  EnforcedStyle: semantic #only_raise/only_fail

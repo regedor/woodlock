@@ -25,9 +25,9 @@ end
 
 module Woodlock
   class Engine < ::Rails::Engine
-    initializer :assets do |config|
+    initializer :assets do
       Rails.application.config.assets.precompile += %w(woodlock.js woodlock.css active_admin.css)
-      Rails.application.config.assets.paths << root.join("app", "assets", "images")
+      Rails.application.config.assets.paths << root.join('app', 'assets', 'images')
     end
 
     initializer :woodlock do
