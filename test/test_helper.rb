@@ -38,8 +38,7 @@ Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 if ActionDispatch::IntegrationTest.method_defined?(:fixture_path=)
-  ActionDispatch::IntegrationTest.fixture_path =
-    File.expand_path('../fixtures', __FILE__)
+  ActionDispatch::IntegrationTest.fixture_path = File.expand_path('../fixtures', __FILE__)
 end
 
 # Load fixtures from the engine

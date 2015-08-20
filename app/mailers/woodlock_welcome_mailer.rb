@@ -6,8 +6,8 @@ class WoodlockWelcomeMailer < ApplicationMailer
     else provider_name = 'unknown provider'
     end
 
-    @greeting = "Hi #{user.first_name}! Thanks for registering with #{provider_name}."
+    @greeting = "Hi #{user.first_name}! Thanks for your registration."
 
-    mail to: user.email, subject: "Apiflat registration success"
+    mail to: user.email, subject: "#{provider_name} registration success"
   end
 end
