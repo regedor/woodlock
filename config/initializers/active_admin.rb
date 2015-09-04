@@ -4,11 +4,6 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      menu.add label: "Languages" do |lang|
-        lang.add label: "English", url: proc { url_for(locale: 'en') }, id: 'i18n-en', priority: 1
-        lang.add label: "Duitse", url: proc { url_for(locale: 'de') }, id: 'i18n-de', priority: 2
-        lang.add label: "Português", url: proc { url_for(locale: 'pt') }, id: 'i18n-pt', priority: 3
-      end
       menu.add label: proc { display_name current_active_admin_user },
                 url: '#',
                 id: 'current_user',
