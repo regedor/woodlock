@@ -12,6 +12,8 @@ ActiveAdmin.setup do |config|
     end
   end
 
+  config.show_comments_in_menu = false
+
   config.load_paths.delete_at(0)
   config.load_paths << "#{Woodlock::Engine.root}/app/admin/"
   config.load_paths << "#{Rails.root}/app/admin/"
