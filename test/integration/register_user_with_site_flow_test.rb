@@ -57,5 +57,4 @@ class RegisterUserWithSiteFlowTest < ActionDispatch::IntegrationTest
     click_button 'Sign in'
     assert page.has_content? 'Sign out'
   end
-
 end
