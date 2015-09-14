@@ -3,8 +3,8 @@
 Devise.setup do |config|
   require "omniauth-facebook" 
   require "omniauth-google-oauth2"
-  config.omniauth :facebook, ENV['omniauth_facebook_app_id'], ENV['omniauth_facebook_app_secret']
-  config.omniauth :google_oauth2, ENV['omniauth_google_app_id'], ENV['omniauth_google_app_secret'], {}
+  config.omniauth :facebook, ENV['OMNIAUTH_FACEBOOK_APP_ID'], ENV['OMNIAUTH_FACEBOOK_APP_SECRET']
+  config.omniauth :google_oauth2, ENV['OMNIAUTH_GOOGLE_APP_ID'], ENV['OMNIAUTH_GOOGLE_APP_SECRET'], {}
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
