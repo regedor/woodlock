@@ -31,4 +31,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'cancan', '~> 1.6.10'
   s.add_dependency 'devise', '~> 3.5.1'
   s.add_dependency 'execjs', '~> 2.5.2'
+  s.add_dependency 'gravtastic', '~> 3.2.6'
 end

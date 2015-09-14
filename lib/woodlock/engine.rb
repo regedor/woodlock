@@ -13,6 +13,7 @@ require 'devise'
 require 'execjs'
 require 'pg'
 require 'activeadmin'
+require 'gravtastic'
 
 if Rails.env.development? || Rails.env.test?
   require 'thin'
