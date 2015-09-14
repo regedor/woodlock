@@ -1,11 +1,10 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   require "omniauth-facebook" 
   require "omniauth-google-oauth2"
-  config.omniauth :facebook, "681615048637257", "54cdc978c692144022562125bd67dbf7"
-  config.omniauth :google_oauth2, '553987797550-7anasd3f9fpv6roecraa59oj1ngdvl0d.apps.googleusercontent.com', 'iwFoZW4ts42FiiB0aB-YZFb5', {}
+  config.omniauth :facebook, ENV['omniauth_facebook_app_id'], ENV['omniauth_facebook_app_secret']
+  config.omniauth :google_oauth2, ENV['omniauth_google_app_id'], ENV['omniauth_google_app_secret'], {}
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -18,7 +17,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'info@woodlock.com'
+  config.mailer_sender = Woodlock.site_email
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'

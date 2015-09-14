@@ -25,6 +25,19 @@ if Rails.env.development? || Rails.env.test?
 end
 
 module Woodlock
+  class << self
+    mattr_accessor :site_name, :site_email
+
+    self.site_name = 'Woodlock engine'
+    self.site_email = 'info@woodlock.com'
+    # add default values of more config vars here
+  end
+
+   # this function maps the vars from your app into your engine
+  def self.setup(&block)
+    yield self
+  end
+
   class Engine < ::Rails::Engine
     initializer :assets do
       Rails.application.config.assets.precompile += %w(woodlock.js woodlock.css active_admin.css)

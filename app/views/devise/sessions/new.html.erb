@@ -2,7 +2,6 @@
   <div class="col-sm-12 col-md-4 col-md-offset-4">
     <div class="well well-lg well-opacity">
       <%= image_tag '/woodlock-logo.png', size: '300x48', class: 'auth-logo' %>
-
       <div class="btn-group display-block" role="group">
         <div class="btn-group width-100per">
           <%= button_to t('devise.sign_in_with_facebook'), omniauth_authorize_path(resource_name, 'facebook'), class: 'btn btn-primary btn-lg btn-block m-bottom-15px' %>
