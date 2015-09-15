@@ -52,10 +52,11 @@ class User < ActiveRecord::Base
   end
 
   def gravatar?
-    gravatar_url.include?('http://files.softicons.com/download/toolbar-icons/free-tabs-color-icons-by-kevin-andersson/png/40/User.png') ? false : true
+    gravatar_url.include?('http://www.apiflat.com/no_user.png') ? false : true
   end
 
   private
+
   def password_required?
     new_record? ? super : false
   end

@@ -26,16 +26,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def set_photo_url(user, auth)
     if auth.provider == 'facebook' && user.facebook_photo_url != auth.info.image
-      user.facebook_photo_url = auth.info.image 
+      user.facebook_photo_url = auth.info.image
       user.save
     elsif user.google_photo_url != auth.info.image
-      user.google_photo_url = auth.info.image 
+      user.google_photo_url = auth.info.image
       user.save
     end
   end
 
   def set_gender(user, auth)
-    user.gender = auth.extra.raw_info.gender if auth.provider == 'facebook' && user.gender == 'undefined' 
+    user.gender = auth.extra.raw_info.gender if auth.provider == 'facebook' && user.gender == 'undefined'
     user.save
   end
 end
