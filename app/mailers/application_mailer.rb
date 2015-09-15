@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@woodlock.com'
+  default from: Woodlock.site_name
   layout 'mailer'
 end
