@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/regedor/woodlock/badges/gpa.svg)](https://codeclimate.com/github/regedor/woodlock)
 [![Test Coverage](https://codeclimate.com/github/regedor/woodlock/badges/coverage.svg)](https://codeclimate.com/github/regedor/woodlock/coverage)
 
-Woodlock is an authentication and user management engine using *devise* and *active admin*.
+Woodlock is an authentication and user management engine using *gravtastic*, *devise*, *active admin* and *google analytics*.
 
 This project rocks and uses MIT-LICENSE.
 
@@ -46,6 +46,7 @@ ENV['OMNIAUTH_FACEBOOK_APP_ID'] = 'My Facebook App Id'
 ENV['OMNIAUTH_FACEBOOK_APP_SECRET'] = 'My Facebook App Secret'
 ENV['OMNIAUTH_GOOGLE_APP_ID'] = 'My Google App Id'
 ENV['OMNIAUTH_GOOGLE_APP_SECRET'] = 'My Google App Secret'
+ENV['GOOGLE_ANALYTICS_TRACKING_ID'] = 'My Google Analytics Tracking Id'
 ```
 
 * Load environment variables before environments/*.rb:
