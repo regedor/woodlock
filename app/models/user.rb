@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Gravtastic
-  gravtastic size: 40, default: 'http://www.apiflat.com/no_user.png'
+  gravtastic size: 40, default: Woodlock.gravatar_default_url
 
   devise :database_authenticatable,
     :registerable,
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def gravatar?
-    gravatar_url.include?('http://www.apiflat.com/no_user.png') ? false : true
+    gravatar_url.include?(Woodlock.gravatar_default_url) ? false : true
   end
 
   private

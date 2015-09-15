@@ -1,3 +1,4 @@
+/test/dummy/config/initializers/app_env_vars.rb
 *.gem
 *.rbc
 /.config

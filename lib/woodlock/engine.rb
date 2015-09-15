@@ -26,10 +26,11 @@ end
 
 module Woodlock
   class << self
-    mattr_accessor :site_name, :site_email
+    mattr_accessor :site_name, :site_email, :gravatar_default_url
 
     self.site_name = 'Woodlock engine'
     self.site_email = 'info@woodlock.com'
+    self.gravatar_default_url = 'http://www.apiflat.com/no_user.png'
     # add default values of more config vars here
   end
 
