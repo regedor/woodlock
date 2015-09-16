@@ -35,7 +35,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def set_gender(user, auth)
-    user.gender = auth.extra.raw_info.gender if auth.provider == 'facebook' && user.gender == 'undefined'
+    user.gender = auth.extra.raw_info.gender if auth.provider == 'facebook' && user.gender.nil?
     user.save
   end
 end
