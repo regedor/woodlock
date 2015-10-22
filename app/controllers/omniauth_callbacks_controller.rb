@@ -14,6 +14,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = User.find_or_create_with_oauth(auth)
 
     if user.persisted?
+      set_name(user, auth)
       set_photo_url(user, auth)
       set_gender(user, auth)
       sign_in_and_redirect user, event: :authentication
@@ -21,6 +22,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session['devise.#{kind}_data'] = request.env['omniauth.auth']
       redirect_to sign_in_url
+    end
+  end
+
+  def set_name(user, auth)
+    if user.first_name.empty? && user.last_name.empty?
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.save
     end
   end
 

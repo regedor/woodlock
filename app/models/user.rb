@@ -11,12 +11,8 @@ class User < ActiveRecord::Base
     :trackable,
     :validatable
 
-  validates :first_name,
-    presence: true,
-    length: { maximum: 30 }
-
-  validates :last_name, presence: true,
-                        length: { maximum: 30 }
+  #validates :first_name, presence: true, length: { maximum: 30 }
+  #validates :last_name, presence: true, length: { maximum: 30 }
 
   validates :email,
     presence: true,
@@ -30,7 +26,6 @@ class User < ActiveRecord::Base
     if stored_user
       stored_user
     else
-
       user = User.new(
         first_name: auth.info.first_name,
         last_name: auth.info.last_name,

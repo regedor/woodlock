@@ -18,11 +18,11 @@
         <h4><%= t 'devise.sign_up_with_site' %></h4>
         
         <div class="field form-group">
-          <%= f.text_field :first_name, autofocus: true, placeholder: 'First name', class: 'form-control' %>
+          <%= f.text_field :first_name, autofocus: true, required: true, placeholder: 'First name', class: 'form-control' %>
         </div>
         
         <div class="field form-group">
-          <%= f.text_field :last_name, autofocus: true, placeholder: 'Last name', class: 'form-control' %>
+          <%= f.text_field :last_name, autofocus: true, required: true, placeholder: 'Last name', class: 'form-control' %>
         </div>
 
         <div class="field form-group">
