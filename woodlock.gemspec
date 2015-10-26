@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootswatch-rails', '~> 3.3.4'
   s.add_dependency 'omniauth', '~> 1.2.2'
   s.add_dependency 'omniauth-facebook', '~> 2.0.1'
+  s.add_dependency 'omniauth-oauth2', '~> 1.3.1'
   s.add_dependency 'omniauth-google-oauth2', '~> 0.2.6'
   s.add_dependency 'coffee-rails', '~> 4.1.0'
   s.add_dependency 'jquery-rails'
