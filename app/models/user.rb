@@ -42,8 +42,12 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    name = first_name + ' ' + last_name
-    name.downcase.titleize
+    if first_name.blank? || last_name.blank?
+      ''
+    else
+      name = first_name + ' ' + last_name
+      name.downcase.titleize
+    end
   end
 
   def gravatar?
