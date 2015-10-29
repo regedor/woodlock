@@ -46,7 +46,7 @@ module Woodlock
     end
 
     initializer :woodlock do
-      # error version: `gsub' for []:Array (NoMethodError) 
+      # error version: `gsub' for []:Array (NoMethodError)
       # ActiveAdmin.application.load_paths.unshift Dir[File.dirname(__FILE__) + '/admin']
       ActiveAdmin.application.load_paths.unshift root.join('lib', 'admin').to_s
     end
