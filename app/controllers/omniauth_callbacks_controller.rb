@@ -26,7 +26,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def set_name(user, auth)
-    unless user.first_name || user.last_name
+    unless user.first_name && user.last_name
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.save
