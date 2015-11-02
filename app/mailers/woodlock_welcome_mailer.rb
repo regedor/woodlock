@@ -6,8 +6,8 @@ class WoodlockWelcomeMailer < ApplicationMailer
     else provider_name = 'unknown provider'
     end
 
-    @greeting = "Hi #{user.first_name}! Thanks for your registration."
+    @greeting = "#{ t('hi') } #{ user.first_name }! #{ t('thanks_for_registration') }."
 
-    mail to: user.email, reply_to: Woodlock.site_email, subject: "#{ Woodlock.site_name } - #{ provider_name } registration success"
+    mail to: user.email, reply_to: Woodlock.site_email, subject: "#{ Woodlock.site_name } - #{ provider_name } #{ t('registration_success') }"
   end
 end

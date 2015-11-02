@@ -1,4 +1,7 @@
 pt:
+  hi: Olá
+  thanks_for_registration: Obrigado pelo seu registo
+  registration_success: "- registado com sucesso"
   time:
    formats:
      default: "%Y/%m/%d"

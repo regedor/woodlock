@@ -1,4 +1,7 @@
 en:
+  hi: Hi
+  thanks_for_registration: Thanks for your registration
+  registration_success: registration success
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
