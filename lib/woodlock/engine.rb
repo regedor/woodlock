@@ -26,7 +26,7 @@ end
 
 module Woodlock
   class << self
-    mattr_accessor :site_name, :site_email, :gravatar_default_url
+    mattr_accessor :site_name, :site_email, :site_url, :gravatar_default_url
 
     self.site_name = 'Woodlock engine'
     self.site_email = 'info@woodlock.com'
