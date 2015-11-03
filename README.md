@@ -34,6 +34,7 @@ end
 Woodlock.setup do |config|
   config.site_name = 'My Site Name'
   config.site_email = 'my_site_email@mail.com'
+  config.site_url = 'www.my_site_url.com'
   config.gravatar_default_url = 'http://www.my_gravatar_default_url.com/some_image.jpg'
 end
 ```
