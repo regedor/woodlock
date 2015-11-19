@@ -36,10 +36,11 @@ Woodlock.setup do |config|
   config.site_email = 'my_site_email@mail.com'
   config.site_url = 'www.my_site_url.com'
   config.gravatar_default_url = 'http://www.my_gravatar_default_url.com/some_image.jpg'
+  config.authentication_services = ['site','google','facebook','github'] # Optional. Defaults to site, google and facebook.
 end
 ```
 
-* Define the following environment variables and add the file to .gitignore:
+* Define the following environment variables if nedded, and add the file to .gitignore:
 
 ```
 # config/initializers/app_env_vars.rb
@@ -48,6 +49,8 @@ ENV['OMNIAUTH_FACEBOOK_APP_SECRET'] = 'My Facebook App Secret'
 ENV['OMNIAUTH_GOOGLE_APP_ID'] = 'My Google App Id'
 ENV['OMNIAUTH_GOOGLE_APP_SECRET'] = 'My Google App Secret'
 ENV['GOOGLE_ANALYTICS_TRACKING_ID'] = 'My Google Analytics Tracking Id'
+ENV['OMNIAUTH_GITHUB_CLIENT_ID'] = 'My Github Client Id'
+ENV['OMNIAUTH_GITHUB_SECRET'] = 'My Github Secret'
 ```
 
 * Load environment variables before environments/*.rb:
