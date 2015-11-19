@@ -50,7 +50,7 @@ ENV['OMNIAUTH_GOOGLE_APP_ID'] = 'My Google App Id'
 ENV['OMNIAUTH_GOOGLE_APP_SECRET'] = 'My Google App Secret'
 ENV['GOOGLE_ANALYTICS_TRACKING_ID'] = 'My Google Analytics Tracking Id'
 ENV['OMNIAUTH_GITHUB_CLIENT_ID'] = 'My Github Client Id'
-ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'] = 'My Github Secret'
+ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'] = 'My Github Client Secret'
 ```
 
 * Load environment variables before environments/development.rb:
