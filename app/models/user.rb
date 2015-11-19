@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     gravatar_url.include?(Woodlock.gravatar_default_url) ? false : true
   end
 
+  def photo_url
+    facebook_photo_url || google_photo_url || gravatar_url
+  end
+
   private
 
   def password_required?

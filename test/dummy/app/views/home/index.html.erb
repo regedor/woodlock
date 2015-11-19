@@ -8,7 +8,7 @@
 <p><a href="<%= Woodlock.site_url %>"><%= Woodlock.site_url %></a></p>
 <h3>Omniauth services:</h3>
 <ul>
-  <% Woodlock.omniauth_services.each do |service| %>
+  <% Woodlock.authentication_services.each do |service| %>
     <li><%= service %></li>
   <% end %>
 </ul>

@@ -53,10 +53,10 @@ ENV['OMNIAUTH_GITHUB_CLIENT_ID'] = 'My Github Client Id'
 ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'] = 'My Github Secret'
 ```
 
-* Load environment variables before environments/*.rb:
+* Load environment variables before environments/development.rb:
 
 ```
-# config/environment.rb
+# config/environments/development.rb
 app_env_vars = File.join(Rails.root, 'config', 'initializers', 'app_env_vars.rb')
 load(app_env_vars) if File.exists?(app_env_vars)
 
