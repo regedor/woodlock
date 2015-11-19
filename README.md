@@ -64,6 +64,9 @@ load(app_env_vars) if File.exists?(app_env_vars)
 
 ```
 
+* Override photo_url method on User model if you want to change photo priority. (Defaults to facebook then google then gravatar)
+
+
 * Add logo file "woodlock-logo.png" to public folder (maximum width/height: 300x48)
 
 * Add background image "woodlock-background.jpg" to public folder
