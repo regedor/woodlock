@@ -2,50 +2,37 @@
   <div class="col-sm-12 col-md-4 col-md-offset-4">
     <div class="well well-lg well-opacity">
       <%= image_tag '/woodlock-logo.png', size: '300x48', class: 'auth-logo' %>
-      <div class="btn-group display-block m-bottom-15px" role="group">
-
-        <% if Woodlock.omniauth_services %>
-          <% Woodlock.omniauth_services.each do |service| %>
-            <div class="width-100per">
-              <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
-              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
-            </div>
+        <% if Woodlock.authentication_services %>
+          <div class="btn-group display-block m-bottom-15px" role="group">
+            <% Woodlock.authentication_services.each do |service| %>
+              <% next if service == 'site' %>
+              <div class="width-100per">
+                <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
+                <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
+              </div>
+            <% end %>
+          </div>
+          <% if Woodlock.authentication_services.include?('site') %>
+            <%= render 'sign_with_site' %>
           <% end %>
         <% else %>
-          <% ['facebook','google'].each do |service| %>
-            <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
-            <div class="width-100per">
-              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
-            </div>
-          <% end %>
+          <div class="btn-group display-block m-bottom-15px" role="group">
+            <% ['facebook','google'].each do |service| %>
+              <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
+              <div class="width-100per">
+                <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
+              </div>
+            <% end %>
+          </div>
+          <%= render 'sign_with_site' %>
         <% end %>
       </div>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <p class='sign-in-with-site'><%= t('devise.sign_in_with_site') %></p>
-        <div class="field form-group">
-          <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
-        </div>
-
-        <div class="field form-group">
-          <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control'%>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field form-group pull-right">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, class: 'color-white' %>
-          </div>
-        <% end %>
-
-        <div class="actions form-group">
-          <%= f.submit t('devise.sign_in'), class: 'btn btn-default' %>
-        </div>
-      <% end %>
-
       <ul class='breadcrumb'>
-        <li><%= link_to t('devise.sign_up'), new_user_registration_path %></li>
-        <li><%= link_to t('devise.forgot_password'), new_password_path %></li>
+        <% if Woodlock.authentication_services.nil? || (Woodlock.authentication_services && Woodlock.authentication_services.include?('site')) %>
+          <li><%= link_to t('devise.sign_up'), new_user_registration_path %></li>
+          <li><%= link_to t('devise.forgot_password'), new_password_path %></li>
+        <% end %>
         <li><%= link_to t('devise.go_back'), root_path %></li>
       </ul>
     </div>
