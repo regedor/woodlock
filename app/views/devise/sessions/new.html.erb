@@ -2,20 +2,27 @@
   <div class="col-sm-12 col-md-4 col-md-offset-4">
     <div class="well well-lg well-opacity">
       <%= image_tag '/woodlock-logo.png', size: '300x48', class: 'auth-logo' %>
-      <div class="btn-group display-block" role="group">
-        <div class="btn-group width-100per">
-          <%= button_to t('devise.sign_in_with_facebook'), omniauth_authorize_path(resource_name, 'facebook'), class: 'btn btn-primary btn-lg btn-block m-bottom-15px' %>
-        </div>
-        <div class="btn-group width-100per m-bottom-15px">
-          <%= button_to t('devise.sign_in_with_google'), omniauth_authorize_path(resource_name, 'google_oauth2'), class: 'btn btn-primary btn-lg btn-block' %>
-        </div>
-        <div class="btn-group width-100per m-bottom-15px">
-          <%= button_to t('devise.sign_in_with_github'), omniauth_authorize_path(resource_name, 'github'), class: 'btn btn-primary btn-lg btn-block' %>
-        </div>
+      <div class="btn-group display-block m-bottom-15px" role="group">
+
+        <% if Woodlock.omniauth_services %>
+          <% Woodlock.omniauth_services.each do |service| %>
+            <div class="width-100per">
+              <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
+              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
+            </div>
+          <% end %>
+        <% else %>
+          <% ['facebook','google_oauth2'].each do |service| %>
+            <div class="width-100per">
+              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-            <hr class='login-divider'>
+
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <h4><%= t('devise.sign_in_with_site') %></h4>
+        <p class='sign-in-with-site'><%= t('devise.sign_in_with_site') %></p>
         <div class="field form-group">
           <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
         </div>
