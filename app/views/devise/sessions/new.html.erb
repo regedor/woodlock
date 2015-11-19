@@ -12,14 +12,14 @@
             </div>
           <% end %>
         <% else %>
-          <% ['facebook','google_oauth2'].each do |service| %>
+          <% ['facebook','google'].each do |service| %>
+            <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
             <div class="width-100per">
-              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
+              <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
             </div>
           <% end %>
         <% end %>
       </div>
-
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <p class='sign-in-with-site'><%= t('devise.sign_in_with_site') %></p>

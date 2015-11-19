@@ -3,5 +3,5 @@ Woodlock.setup do |config|
   config.site_email = 'test_site_email@mail.com'
   config.site_url = 'www.test_site_url.com'
   config.gravatar_default_url = 'http://www.apiflat.com/no_user.png'
-  config.omniauth_services = ['facebook', 'google', 'github']
+  config.omniauth_services = ['facebook','github']
 end
