@@ -1,10 +1,12 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  require "omniauth-facebook" 
+  require "omniauth-facebook"
   require "omniauth-google-oauth2"
+  require "omniauth-github"
   config.omniauth :facebook, ENV['OMNIAUTH_FACEBOOK_APP_ID'], ENV['OMNIAUTH_FACEBOOK_APP_SECRET']
   config.omniauth :google_oauth2, ENV['OMNIAUTH_GOOGLE_APP_ID'], ENV['OMNIAUTH_GOOGLE_APP_SECRET'], {}
+  config.omniauth :github, ENV['OMNIAUTH_GITHUB_CLIENT_ID'], ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'], scope: 'user:email'
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

@@ -7,6 +7,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     woodlock_oauth_callback('google')
   end
 
+  def github
+    woodlock_oauth_callback('github')
+  end
+
   private
 
   def woodlock_oauth_callback(kind)
