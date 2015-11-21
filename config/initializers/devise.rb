@@ -6,7 +6,7 @@ Devise.setup do |config|
   require "omniauth-github"
   config.omniauth :facebook, ENV['OMNIAUTH_FACEBOOK_APP_ID'], ENV['OMNIAUTH_FACEBOOK_APP_SECRET']
   config.omniauth :google_oauth2, ENV['OMNIAUTH_GOOGLE_APP_ID'], ENV['OMNIAUTH_GOOGLE_APP_SECRET'], {}
-  config.omniauth :github, ENV['OMNIAUTH_GITHUB_CLIENT_ID'], ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'], scope: 'user:email'
+  config.omniauth :github, ENV['OMNIAUTH_GITHUB_CLIENT_ID'], ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'], scope: 'user:email, repo'
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
