@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+#ruby '2.2.1'
 
 # Declare your gem's dependencies in woodlock.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
