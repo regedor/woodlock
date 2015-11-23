@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+#ruby '2.2.1'
 
 # Declare your gem's dependencies in woodlock.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -22,6 +22,7 @@ group :development, :test do
   gem 'capybara-email', '~> 2.4.0'
   gem 'shoulda', '~> 3.5.0' 
   gem 'codeclimate-test-reporter'
+  gem 'byebug'
 end
 
 group :production do
