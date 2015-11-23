@@ -4,4 +4,5 @@ Woodlock.setup do |config|
   config.site_url = 'www.test_site_url.com'
   config.gravatar_default_url = 'http://www.apiflat.com/no_user.png'
   config.authentication_services = ['facebook','site','github']
+  config.github_scope = 'user:email, repo'
 end

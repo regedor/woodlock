@@ -22,6 +22,7 @@ group :development, :test do
   gem 'capybara-email', '~> 2.4.0'
   gem 'shoulda', '~> 3.5.0' 
   gem 'codeclimate-test-reporter'
+  gem 'byebug'
 end
 
 group :production do
