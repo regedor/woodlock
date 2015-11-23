@@ -31,8 +31,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def set_name(user, auth)
     unless user.first_name && user.last_name
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
+      if auth.info.first_name && auth.info.last_name
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+      elsif auth.info.name
+        user.first_name = auth.info.name.gsub(/\s+/m, ' ').strip.split(" ")[0]
+        user.last_name = auth.info.name.gsub(/\s+/m, ' ').strip.split(" ")[-1]
+      end
       user.save
     end
   end
@@ -41,8 +46,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if auth.provider == 'facebook' && user.facebook_photo_url != auth.info.image
       user.facebook_photo_url = auth.info.image
       user.save
-    elsif user.google_photo_url != auth.info.image
+    elsif auth.provider == 'google_oauth2' && user.google_photo_url != auth.info.image
       user.google_photo_url = auth.info.image
+      user.save
+    elsif auth.provider == 'github' && user.github_photo_url != auth.info.image
+      user.github_photo_url = auth.info.image
       user.save
     end
   end
