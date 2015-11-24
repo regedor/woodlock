@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def photo_url
-    facebook_photo_url || google_photo_url || gravatar_url
+    facebook_photo_url || google_photo_url || github_photo_url || gravatar_url
   end
 
   private
