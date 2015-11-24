@@ -19,13 +19,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user = User.find_or_create_with_oauth(auth)
       if user.persisted?
         update_user_info_from_auth(user, auth)
-        sign_in_and_redirect user, event: :authentication
+        sign_in_and_redirect(user, event: :authentication)
         set_flash_message(:notice, :success, kind: kind.titleize) if is_navigational_format?
       else
         redirect_to new_user_session_url, alert: "User was not persisted. Check #{auth.provider.titleize} credentials."
       end
     else
-      redirect_to new_user_session_url, alert: "There was a problem requesting omniauth.auth ."
+      redirect_to new_user_session_url, alert: "There was a problem making the omniauth request."
     end
   end
 
