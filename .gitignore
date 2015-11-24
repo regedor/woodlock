@@ -1,4 +1,5 @@
 /test/dummy/config/initializers/app_env_vars.rb
+/test/dummy/.byebug_history
 *.gem
 *.rbc
 /.config

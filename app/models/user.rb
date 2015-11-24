@@ -27,18 +27,38 @@ class User < ActiveRecord::Base
       stored_user
     else
       user = User.new(
-        first_name: auth.info.first_name,
-        last_name: auth.info.last_name,
         provider: auth.provider,
         uid: auth.uid,
         email: auth.info.email,
-        gender: auth.extra.raw_info.gender || 'undefined',
         password: Devise.friendly_token[0, 20])
       user.skip_confirmation!
-      user.save
-      WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now
+      WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now if user.save
       user
     end
+  end
+
+  def update_name_from_auth(auth)
+    if auth.info.first_name && auth.info.last_name
+      self.first_name = auth.info.first_name
+      self.last_name = auth.info.last_name
+    elsif auth.info.name
+      self.first_name = auth.info.name.gsub(/\s+/m, ' ').strip.split(" ")[0]
+      self.last_name = auth.info.name.gsub(/\s+/m, ' ').strip.split(" ")[-1]
+    end
+  end
+
+  def update_photo_url_from_auth(auth)
+    if auth.provider == 'facebook' && facebook_photo_url != auth.info.image
+      self.facebook_photo_url = auth.info.image
+    elsif auth.provider == 'google_oauth2' && google_photo_url != auth.info.image
+      self.google_photo_url = auth.info.image
+    elsif auth.provider == 'github' && github_photo_url != auth.info.image
+      self.github_photo_url = auth.info.image
+    end
+  end
+
+  def update_gender_from_auth(auth)
+    self.gender = auth.extra.raw_info.gender if gender.nil? && auth.provider == 'facebook'
   end
 
   def full_name

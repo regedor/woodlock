@@ -4,9 +4,22 @@ Devise.setup do |config|
   require "omniauth-facebook"
   require "omniauth-google-oauth2"
   require "omniauth-github"
-  config.omniauth :facebook, ENV['OMNIAUTH_FACEBOOK_APP_ID'], ENV['OMNIAUTH_FACEBOOK_APP_SECRET']
-  config.omniauth :google_oauth2, ENV['OMNIAUTH_GOOGLE_APP_ID'], ENV['OMNIAUTH_GOOGLE_APP_SECRET'], {}
-  config.omniauth :github, ENV['OMNIAUTH_GITHUB_CLIENT_ID'], ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'], scope: Woodlock.github_scope
+
+  config.omniauth :facebook,
+    Rails.application.secrets.omniauth_facebook_app_id,
+    Rails.application.secrets.omniauth_facebook_app_secret,
+    scope: 'email',
+    info_fields: 'email, name, first_name, last_name, gender'
+
+  config.omniauth :google_oauth2,
+    Rails.application.secrets.omniauth_google_client_id,
+    Rails.application.secrets.omniauth_google_client_secret,
+    {}
+
+  config.omniauth :github,
+    Rails.application.secrets.omniauth_github_client_id,
+    Rails.application.secrets.omniauth_github_client_secret,
+    scope: Woodlock.github_scope
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
