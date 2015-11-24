@@ -5,7 +5,7 @@
         <% if Woodlock.authentication_services %>
           <div class="btn-group display-block m-bottom-15px" role="group">
             <% Woodlock.authentication_services.each do |service| %>
-              <% next if service == 'site' %>
+              <% next if service == 'password' %>
               <div class="width-100per">
                 <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
                 <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
@@ -29,7 +29,7 @@
       </div>
 
       <ul class='breadcrumb'>
-        <% if Woodlock.authentication_services.nil? || (Woodlock.authentication_services && Woodlock.authentication_services.include?('site')) %>
+        <% if Woodlock.authentication_services.nil? || (Woodlock.authentication_services && Woodlock.authentication_services.include?('password')) %>
           <li><%= link_to t('devise.sign_up'), new_user_registration_path %></li>
           <li><%= link_to t('devise.forgot_password'), new_password_path %></li>
         <% end %>
