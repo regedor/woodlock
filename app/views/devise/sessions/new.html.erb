@@ -12,8 +12,8 @@
               </div>
             <% end %>
           </div>
-          <% if Woodlock.authentication_services.include?('site') %>
-            <%= render 'sign_with_site' %>
+          <% if Woodlock.authentication_services.include?('password') %>
+            <%= render 'sign_with_password' %>
           <% end %>
         <% else %>
           <div class="btn-group display-block m-bottom-15px" role="group">
