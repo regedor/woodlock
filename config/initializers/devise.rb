@@ -1,5 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+
+load "#{Rails.root}/config/initializers/woodlock.rb"
+
 Devise.setup do |config|
   require "omniauth-facebook"
   require "omniauth-google-oauth2"

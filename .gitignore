@@ -1,5 +1,3 @@
-/test/dummy/config/initializers/app_env_vars.rb
-/test/dummy/.byebug_history
 *.gem
 *.rbc
 /.config
@@ -17,6 +15,8 @@ pkg/
 /test/dummy/log/*.log
 /test/dummy/tmp/
 /test/dummy/.sass-cache
+/test/dummy/config/initializers/app_env_vars.rb
+/test/dummy/.byebug_history
 
 ## Specific to RubyMotion:
 .dat*
