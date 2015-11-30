@@ -33,5 +33,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user.update_name_from_auth(auth)
     user.update_photo_url_from_auth(auth)
     user.update_gender_from_auth(auth)
+    user.update_github_nickname_from_auth(auth)
   end
 end

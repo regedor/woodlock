@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     self.gender = auth.extra.raw_info.gender if gender.nil? && auth.provider == 'facebook'
   end
 
+  def update_github_nickname_from_auth(auth)
+    self.github_nickname = auth.info.nickname if auth.provider == 'github'
+  end
+
   def full_name
     if first_name.blank? || last_name.blank?
       ''
