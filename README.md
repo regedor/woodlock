@@ -60,3 +60,14 @@ end
 * Add logo file "woodlock-logo.png" to public folder (maximum width/height: 300x48)
 
 * Add background image "woodlock-background.jpg" to public folder
+
+* If you need to load Woodlock's routes after the main app's, add to the main app application.rb file:
+
+```
+  initializer :munge_routing_paths, :after => :add_routing_paths do |app|
+    engine_routes_path = app.routes_reloader.paths.select{|path| path =~ //}.first
+    app.routes_reloader.paths.delete(engine_routes_path)
+    app.routes_reloader.paths << engine_routes_path
+  end
+
+```
