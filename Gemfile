@@ -14,7 +14,6 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-gem 'pg'
 
 group :development, :test do
   gem 'thin', '~> 1.6.3'

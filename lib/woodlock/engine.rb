@@ -11,13 +11,11 @@ require 'jquery-rails'
 require 'cancan'
 require 'devise'
 require 'execjs'
-require 'pg'
 require 'activeadmin'
 require 'gravtastic'
 
 if Rails.env.development? || Rails.env.test?
   require 'thin'
-  require 'pg'
   require 'shoulda'
   require 'minitest'
   require 'capybara'
