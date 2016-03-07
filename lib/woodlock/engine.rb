@@ -17,7 +17,7 @@ require 'gravtastic'
 
 if Rails.env.development? || Rails.env.test?
   require 'thin'
-  require 'sqlite3'
+  require 'pg'
   require 'shoulda'
   require 'minitest'
   require 'capybara'
