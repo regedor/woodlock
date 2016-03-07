@@ -14,8 +14,8 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
 group :development, :test do
-  gem 'sqlite3'
   gem 'thin', '~> 1.6.3'
   gem 'minitest', '~> 5.7.0'
   gem 'capybara', '~> 2.4.4' 
@@ -23,8 +23,4 @@ group :development, :test do
   gem 'shoulda', '~> 3.5.0' 
   gem 'codeclimate-test-reporter'
   gem 'byebug'
-end
-
-group :production do
-  gem 'pg'
 end

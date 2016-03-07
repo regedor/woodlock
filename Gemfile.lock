@@ -185,7 +185,6 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pg (0.18.2)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     rack (1.6.4)
@@ -248,7 +247,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -272,11 +270,9 @@ DEPENDENCIES
   capybara-email (~> 2.4.0)
   codeclimate-test-reporter
   minitest (~> 5.7.0)
-  pg
   shoulda (~> 3.5.0)
-  sqlite3
   thin (~> 1.6.3)
   woodlock!
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
