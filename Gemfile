@@ -23,4 +23,5 @@ group :development, :test do
   gem 'shoulda', '~> 3.5.0' 
   gem 'codeclimate-test-reporter'
   gem 'byebug'
+  gem 'sqlite3'
 end

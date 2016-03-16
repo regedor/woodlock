@@ -9,7 +9,7 @@ class WoodlockWelcomeMailer < ApplicationMailer
         provider.capitalize
       end
 
-    @greeting = "#{ t('hi') } #{ user.first_name }! #{ t('thanks_for_registration') }."
+    @greeting = "#{t('hi')} #{user.first_name}! #{t('thanks_for_registration')}."
 
     mail to: user.email, reply_to: "#{Woodlock.site_email}", subject: "#{Woodlock.site_name} - #{provider_name} #{t('registration_success')}"
   end
