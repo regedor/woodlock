@@ -26,13 +26,21 @@ class User < ActiveRecord::Base
     if stored_user
       stored_user
     else
-      user = User.new(
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20])
+      user =
+        User.new(
+          provider: auth.provider,
+          uid: auth.uid,
+          email: auth.info.email,
+          password: Devise.friendly_token[0, 20]
+        )
+
       user.skip_confirmation!
-      user.save
+
+      if user.save
+        user.update_name_from_auth(auth)
+        WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now if user.save
+      end
+
       user
     end
   end
