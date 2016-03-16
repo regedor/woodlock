@@ -32,8 +32,7 @@ class User < ActiveRecord::Base
         email: auth.info.email,
         password: Devise.friendly_token[0, 20])
       user.skip_confirmation!
-      WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now if user.save
-      user
+      user.save!
     end
   end
 
