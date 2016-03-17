@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
 
       if user.save
         user.update_name_from_auth(auth)
-        WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now if user.save
+        unless Woodlock.disable_welcome_email
+          WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now
+        end
       end
 
       user

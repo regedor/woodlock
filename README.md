@@ -38,6 +38,7 @@ Woodlock.setup do |config|
   config.gravatar_default_url = 'http://www.my_gravatar_default_url.com/some_image.jpg'
   config.authentication_services = ['site','google','facebook','github'] # Optional. Defaults to site, google and facebook.
   config.github_scope = 'user:email' # add your custom scopes i.e. 'user:email, repo'
+  config.disable_welcome_email = 'false' # defaults to false
 end
 ```
 
