@@ -14,7 +14,7 @@ This project rocks and uses MIT-LICENSE.
 ```
 #!ruby
 
-gem 'woodlock', git: 'https://itmiguelfernandes@bitbucket.org/itmiguelfernandes/woodlock.git'
+gem 'woodlock', git: 'https://github.com/regedor/woodlock.git'
 
 group :development, :test do
   gem 'thin'
