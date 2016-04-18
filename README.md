@@ -24,10 +24,6 @@ end
 
 * `rake railties:install:migrations`
 
-* `rake db:migrate`
-
-* Define `root_path`
-
 * Add "config/initializers/woodlock.rb" file and specify the following:
 
 ```
@@ -41,6 +37,10 @@ Woodlock.setup do |config|
   config.disable_welcome_email = 'false' # defaults to false
 end
 ```
+
+* `rake db:migrate`
+
+* Define `root_path`
 
 * Define the following secrets:
 
