@@ -56,6 +56,15 @@ end
 
 ```
 
+* Override User model by adding User.rb to your models folder:
+
+```
+require Woodlock::Engine.root.join('app', 'models', 'user')
+
+class User < ActiveRecord::Base
+end
+```
+
 * Override photo_url method on User model if you want to change photo priority. (Defaults to facebook then google then gravatar)
 
 * Add logo file "woodlock-logo.png" to public folder (maximum width/height: 300x48)
