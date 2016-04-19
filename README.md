@@ -32,7 +32,7 @@ Woodlock.setup do |config|
   config.site_email = 'my_site_email@mail.com'
   config.site_url = 'www.my_site_url.com'
   config.gravatar_default_url = 'http://www.my_gravatar_default_url.com/some_image.jpg'
-  config.authentication_services = ['site','google','facebook','github'] # Optional. Defaults to site, google and facebook.
+  config.authentication_services = ['password','google','facebook','github'] # Optional. Defaults to password, google and facebook.
   config.github_scope = 'user:email' # add your custom scopes i.e. 'user:email, repo'
   config.disable_welcome_email = 'false' # defaults to false
 end
