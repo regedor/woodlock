@@ -71,6 +71,8 @@ end
 
 * Add background image "woodlock-background.jpg" to public folder
 
+* If you want to change woodlock sign up themes, override woodlock.sass and include a different theme from the list commented in the file.
+
 * If you need to load Woodlock's routes after the main app's, add to the main app application.rb file:
 
 ```
