@@ -35,6 +35,7 @@ Woodlock.setup do |config|
   config.authentication_services = ['password','google','facebook','github'] # Optional. Defaults to password, google and facebook.
   config.github_scope = 'user:email' # add your custom scopes i.e. 'user:email, repo'
   config.disable_welcome_email = 'false' # defaults to false
+  config.woodlock_theme = 'some theme' # defaults to spacelab
 end
 ```
 
@@ -71,7 +72,9 @@ end
 
 * Add background image "woodlock-background.jpg" to public folder
 
-* If you want to change woodlock sign up themes, override woodlock.sass and include a different theme from the list commented in the file.
+* If you want to change woodlock sign up themes, add config.woodlock_theme = 'some theme' to woodlock.rb initializer. Then, delete the cache assets folder at tmp/cache/assets and restart the server.
+
+The available themes are: amelia, cerulean, cosmo, cyborg, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, slate, spacelab, superhero, united and yeti.
 
 * If you need to load Woodlock's routes after the main app's, add to the main app application.rb file:
 
