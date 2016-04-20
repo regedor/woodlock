@@ -13,6 +13,7 @@ require 'devise'
 require 'execjs'
 require 'activeadmin'
 require 'gravtastic'
+require 'sass_rails_patch'
 
 if Rails.env.development? || Rails.env.test?
   require 'thin'
@@ -24,7 +25,7 @@ end
 
 module Woodlock
   class << self
-    mattr_accessor :site_name, :site_email, :site_url, :gravatar_default_url, :authentication_services, :github_scope, :disable_welcome_email
+    mattr_accessor :site_name, :site_email, :site_url, :gravatar_default_url, :authentication_services, :github_scope, :disable_welcome_email, :woodlock_theme
 
     self.site_name = 'Woodlock engine'
     self.site_email = 'info@woodlock.com'
