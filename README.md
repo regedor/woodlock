@@ -24,6 +24,8 @@ end
 
 * `rake railties:install:migrations`
 
+* `rake db:migrate`
+
 * Add "config/initializers/woodlock.rb" file and specify the following:
 
 ```
@@ -49,8 +51,6 @@ ActiveAdmin.setup do |config|
   # config.register_stylesheet 'active_admin_custom.css'
 end
 ```
-
-* `rake db:migrate`
 
 * Define `root_path`
 
