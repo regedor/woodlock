@@ -39,6 +39,17 @@ Woodlock.setup do |config|
 end
 ```
 
+* Add "config/initializers/active_admin.rb" file and specify the following:
+
+```
+ActiveAdmin.setup do |config|
+  config.site_title = 'My site Name'
+  config.site_title_link = "/"
+  # if you need to add custom css to AA
+  # config.register_stylesheet 'active_admin_custom.css'
+end
+```
+
 * `rake db:migrate`
 
 * Define `root_path`
