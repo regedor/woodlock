@@ -19,8 +19,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user = User.find_or_create_with_oauth(auth)
       if user.persisted?
         update_user_info_from_auth(user, auth)
-        # send mail after user first_name last_name fields are updated
-        WoodlockWelcomeMailer.omniauth_welcome(user, auth.provider).deliver_now
         sign_in_and_redirect(user, event: :authentication)
         set_flash_message(:notice, :success, kind: kind.titleize) if is_navigational_format?
       else
