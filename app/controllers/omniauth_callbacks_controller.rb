@@ -25,7 +25,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to new_user_session_url, alert: "User was not persisted. Check #{auth.provider.titleize} credentials."
       end
     else
-      redirect_to new_user_session_url, alert: "There was a problem making the omniauth request."
+      redirect_to new_user_session_url, alert: 'There was a problem making the omniauth request.'
     end
   end
 
