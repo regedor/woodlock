@@ -97,3 +97,39 @@ The available themes are: amelia, cerulean, cosmo, cyborg, darkly, flatly, journ
   end
 
 ```
+
+* If you're sending emails from Gmail, allow Google less secure apps in the apps email account at https://www.google.com/settings/security/lesssecureapps and
+ https://accounts.google.com/DisplayUnlockCaptcha
+
+* Add config.action_mailer.perform_deliveries = true to production.rb
+
+* If you need to perform actions after login with password, override CustomSessionsController < Devise::SessionsController :
+
+```
+  class CustomSessionsController < Devise::SessionsController
+    after_action :after_login, only: :create
+
+    def after_login
+      # Add your custom instructions
+    end
+  end
+```
+
+* If you need to perform actions after login with omniauth, override OmniauthCallbacksController < Devise::OmniauthCallbacksController :
+
+```
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    # ...
+
+    private
+
+    def execute_persisted_user_actions(user, auth, kind)
+      update_user_info_from_auth(user, auth)
+      # Add your custom instructions
+      sign_in_and_redirect(user, event: :authentication)
+      set_flash_message(:notice, :success, kind: kind.titleize) if is_navigational_format?
+    end
+
+    # ...
+  end
+```
