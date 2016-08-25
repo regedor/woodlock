@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
 
   validates :email,
     presence: true,
+    uniqueness: true,
     format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
+
 
   def self.find_or_create_with_oauth(auth)
     stored_user =
