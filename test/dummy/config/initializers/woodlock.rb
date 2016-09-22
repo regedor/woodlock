@@ -5,5 +5,6 @@ Woodlock.setup do |config|
   config.gravatar_default_url = 'http://www.apiflat.com/no_user.png'
   config.authentication_services = ['google','facebook','password','github']
   config.github_scope = 'user:email, repo'
+  config.github_callback_url = 'http://localhost:3000/auth/github/callback'
   config.woodlock_theme = 'amelia'
 end

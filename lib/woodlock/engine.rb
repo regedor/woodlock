@@ -25,7 +25,7 @@ end
 
 module Woodlock
   class << self
-    mattr_accessor :site_name, :site_email, :site_url, :gravatar_default_url, :authentication_services, :github_scope, :disable_welcome_email, :woodlock_theme
+    mattr_accessor :site_name, :site_email, :site_url, :gravatar_default_url, :authentication_services, :github_scope, :disable_welcome_email, :woodlock_theme, :github_callback_url
 
     self.site_name = 'Woodlock engine'
     self.site_email = 'info@woodlock.com'
