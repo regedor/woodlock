@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
 require "woodlock/version"
@@ -7,32 +7,27 @@ require "woodlock/version"
 Gem::Specification.new do |s|
   s.name        = "woodlock"
   s.version     = Woodlock::VERSION
-  s.authors     = ["Miguel Regedor", "Miguel Fernandes"]
-  s.email       = ["miguelregedor@gmail.com","it.miguelfernandes@gmail.com"]
-  s.homepage    = "https://github.com/regedor/woodlock"
-  s.summary     = "Authentication and user management engine."
-  s.description = "Woodlock is an authentication and user management engine."
+  s.authors     = ["Miguel Regedor"]
+  s.email       = ["miguelregedor@gmail.com"]
+  s.homepage    = ""
+  s.summary     = "Summary of Woodlock."
+  s.description = "Description of Woodlock."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 4.2.1"
-  s.add_dependency 'sass-rails', '~> 5.0.3'
-  s.add_dependency 'bootstrap-sass', '~> 3.3.4.1'
-  s.add_dependency 'bootswatch-rails', '~> 3.3.4'
-  s.add_dependency 'omniauth', '~> 1.2.2'
-  s.add_dependency 'omniauth-facebook', '~> 2.0.1'
-  s.add_dependency 'omniauth-oauth2', '~> 1.3.1'
-  s.add_dependency 'omniauth-google-oauth2', '~> 0.2.6'
-  s.add_dependency 'omniauth-github', '~> 1.1', '>= 1.1.2'
-  s.add_dependency 'coffee-rails', '~> 4.1.0'
-  s.add_dependency 'jquery-rails'
-  s.add_dependency 'jquery-ui-rails', '~> 5.0'
-  s.add_dependency 'activeadmin', '~> 1.0.0.pre1'
-  s.add_dependency 'cancan', '~> 1.6.10'
-  s.add_dependency 'devise', '~> 3.5.1'
-  s.add_dependency 'execjs', '~> 2.5.2'
-  s.add_dependency 'gravtastic', '~> 3.2.6'
-  s.add_dependency 'sass_rails_patch', '~> 0.0.2'
+  # TODO: Devise needs rails 5.0.2. Check updates.
+  s.add_dependency "rails", "~> 5.0.2"
+  s.add_dependency "devise"
+  s.add_dependency "omniauth-facebook"
+  s.add_dependency "omniauth-github"
+  s.add_dependency "omniauth-google-oauth2"
+  s.add_dependency "bootstrap", ">= 4.0.0.alpha6"
+  s.add_dependency "sprockets-rails", ">= 2.3.2"
+  s.add_dependency "rails-assets-tether"
+  s.add_dependency "coffee-rails"
+  s.add_dependency "jquery-rails"
+  s.add_dependency "minitest", ">= 5.10.1"
+
+  s.add_development_dependency "sqlite3"
 end

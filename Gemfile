@@ -1,6 +1,4 @@
-source 'https://rubygems.org'
-
-ruby '2.2.1'
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in woodlock.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -15,13 +13,11 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
-group :development, :test do
-  gem 'thin', '~> 1.6.3'
-  gem 'minitest', '~> 5.7.0'
-  gem 'capybara', '~> 2.4.4'
-  gem 'capybara-email', '~> 2.4.0'
-  gem 'shoulda', '~> 3.5.0'
-  gem 'codeclimate-test-reporter'
-  gem 'byebug'
-  gem 'sqlite3'
+group :development do
+  gem "rubocop"
+end
+
+group :test do
+  gem "byebug"
+  gem "capybara"
 end

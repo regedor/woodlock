@@ -1,63 +1,32 @@
 # Woodlock
-[![Build Status](https://travis-ci.org/regedor/woodlock.svg?branch=master)](https://travis-ci.org/regedor/woodlock)
-[![Code Climate](https://codeclimate.com/github/regedor/woodlock/badges/gpa.svg)](https://codeclimate.com/github/regedor/woodlock)
-[![Test Coverage](https://codeclimate.com/github/regedor/woodlock/badges/coverage.svg)](https://codeclimate.com/github/regedor/woodlock/coverage)
 
-Woodlock is an authentication and user management engine using *gravtastic*, *devise*, *active admin* and *google analytics*.
-
-This project rocks and uses MIT-LICENSE.
-
-### Instructions
+## Installation
 
 * Add to Gemfile:
-
 ```
-#!ruby
-
-gem 'woodlock', git: 'https://github.com/regedor/woodlock.git'
-
-group :development, :test do
-  gem 'thin'
-end
+gem "woodlock", git: "https://github.com/regedor/woodlock.git"
 ```
 * `bundle install`
-
 * `rake railties:install:migrations`
-
 * `rake db:migrate`
-
-* Add "config/initializers/woodlock.rb" file and specify the following:
-
+* Create in initializer in the main app and specify the desired configuration:
 ```
+# config/initializers/woodlock.rb
+
 Woodlock.setup do |config|
-  config.site_name = 'My Site Name'
-  config.site_email = 'my_site_email@mail.com'
-  config.site_url = 'www.my_site_url.com'
-  config.gravatar_default_url = 'http://www.my_gravatar_default_url.com/some_image.jpg'
-  config.authentication_services = ['password','google','facebook','github'] # Optional. Defaults to password, google and facebook.
-  config.github_scope = 'user:email' # add your custom scopes i.e. 'user:email, repo'
-  config.disable_welcome_email = 'false' # defaults to false
-  config.woodlock_theme = 'some theme' # defaults to spacelab
+  config.site_name               = "My Site Name"
+  config.site_email              = "my_site_email@mail.com"
+  config.site_url                = "www.my_site_url.com"
+  config.authentication_services = ["password", "google", "facebook", "github"]
+  config.github_scope            = "user:email"
+  config.welcome_email           = false 
+  config.github_callback_url     = "http://localhost:3000/auth/github/callback"
 end
 ```
 
-* Add "config/initializers/active_admin.rb" file and specify the following:
-
+* Define the secrets you need:
 ```
-ActiveAdmin.setup do |config|
-  config.site_title = 'My site Name'
-  config.site_title_link = "/"
-  # if you need to add custom css to AA
-  # config.register_stylesheet 'active_admin_custom.css'
-end
-```
-
-* Define `root_path`
-
-* Define the following secrets:
-
-```
-# config/secrets.yml
+  # config/secrets.yml
   omniauth_facebook_app_id: <facebook_app_id>
   omniauth_facebook_app_secret: <facebook_app_secret>
   omniauth_google_client_id: <google_client_id>
@@ -68,68 +37,20 @@ end
 
 ```
 
-* Override User model by adding User.rb to your models folder:
+Add `/*= require woodlock/woodlock.css */` to `app/assets/application.css`
+Add `//= require woodlock/woodlock.js` to `app/assets/application.js`
 
+* Set default_url_options for ActionMailer:
 ```
-require Woodlock::Engine.root.join('app', 'models', 'user')
-
-class User < ActiveRecord::Base
-end
+  # config/environments/development.rb
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 ```
-
-* Override photo_url method on User model if you want to change photo priority. (Defaults to facebook then google then gravatar)
-
-* Add logo file "woodlock-logo.png" to public folder (maximum width/height: 300x48)
-
-* Add background image "woodlock-background.jpg" to public folder
-
-* If you want to change woodlock sign up themes, add config.woodlock_theme = 'some theme' to woodlock.rb initializer. Then, delete the cache assets folder at tmp/cache/assets and restart the server.
-
-The available themes are: amelia, cerulean, cosmo, cyborg, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, slate, spacelab, superhero, united and yeti.
-
-* If you need to load Woodlock's routes after the main app's, add to the main app application.rb file:
-
 ```
-  initializer :munge_routing_paths, :after => :add_routing_paths do |app|
-    engine_routes_path = app.routes_reloader.paths.select{|path| path =~ //}.first
-    app.routes_reloader.paths.delete(engine_routes_path)
-    app.routes_reloader.paths << engine_routes_path
-  end
-
+  # config/environments/production.rb
+  config.action_mailer.default_url_options = { host: "my_production_app.com" }
 ```
+## Contributing
+Contribution directions go here.
 
-* If you're sending emails from Gmail, allow Google less secure apps in the apps email account at https://www.google.com/settings/security/lesssecureapps and
- https://accounts.google.com/DisplayUnlockCaptcha
-
-* Add config.action_mailer.perform_deliveries = true to production.rb
-
-* If you need to perform actions after login with password, override CustomSessionsController < Devise::SessionsController :
-
-```
-  class CustomSessionsController < Devise::SessionsController
-    after_action :after_login, only: :create
-
-    def after_login
-      # Add your custom instructions
-    end
-  end
-```
-
-* If you need to perform actions after login with omniauth, override OmniauthCallbacksController < Devise::OmniauthCallbacksController :
-
-```
-  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    # ...
-
-    private
-
-    def execute_persisted_user_actions(user, auth, kind)
-      update_user_info_from_auth(user, auth)
-      # Add your custom instructions
-      sign_in_and_redirect(user, event: :authentication)
-      set_flash_message(:notice, :success, kind: kind.titleize) if is_navigational_format?
-    end
-
-    # ...
-  end
-```
+## License
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

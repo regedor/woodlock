@@ -1,22 +1,12 @@
-<% if user_signed_in? %>
-  <p><%= current_user.email %></p>
-  <%= link_to 'Sign out', destroy_user_session_url, method: 'delete' %>
-<% else %>
-  <%= link_to 'Sign in', new_user_session_url %>
-<% end %>
-<%= image_tag @photo_url %>
-<p><a href="<%= Woodlock.site_url %>"><%= Woodlock.site_url %></a></p>
-<h3>Omniauth services:</h3>
-<ul>
-  <% Woodlock.authentication_services.each do |service| %>
-    <li><%= service %></li>
-  <% end %>
-</ul>
-<h3>Github scope</h3>
-<p><%= Woodlock.github_scope %></p>
-
-<h3>Site email</h3>
-<p><%= Woodlock.site_email %></p>
-
-<h3>Github nickname</h3>
-<p><%= current_user.github_nickname %></p>
+<h2>Dummy Home</h2>
+<p>Email: <%= current_user.email %></p>
+<p>First name: <%= current_user.first_name %></p>
+<p>Last name: <%= current_user.last_name %></p>
+<p>Full name: <%= current_user.full_name %></p>
+<p>Github username: <%= current_user.github_username %></p>
+<p>Photo url image:</p>
+<%= image_tag current_user.photo_url, size: "50x50" %>
+<p>Facebook photo url: <%= current_user.facebook_photo_url %></p>
+<p>Google photo url: <%= current_user.google_photo_url %></p>
+<p>Github photo url: <%= current_user.github_photo_url %></p>
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>

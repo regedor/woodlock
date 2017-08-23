@@ -1,41 +1,52 @@
-<div class="row">
-  <div class="col-sm-12 col-md-4 col-md-offset-4">
-    <div class="well well-lg well-opacity">
-      <%= image_tag '/woodlock-logo.png', size: '300x48', class: 'auth-logo' %>
-        <% if Woodlock.authentication_services %>
-          <div class="btn-group display-block m-bottom-15px" role="group">
-            <% Woodlock.authentication_services.each do |service| %>
-              <% next if service == 'password' %>
-              <div class="width-100per">
-                <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
-                <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
-              </div>
-            <% end %>
-          </div>
-          <% if Woodlock.authentication_services.include?('password') %>
-            <%= render 'sign_with_password' %>
-          <% end %>
-        <% else %>
-          <div class="btn-group display-block m-bottom-15px" role="group">
-            <% ['facebook','google'].each do |service| %>
-              <% service == 'google' ? service_name = 'google_oauth2' : service_name = service %>
-              <div class="width-100per">
-                <%= button_to t("devise.sign_in_with_#{service}"), omniauth_authorize_path(resource_name, service_name), class: 'btn btn-primary btn-lg btn-block m-top-15px' %>
-              </div>
-            <% end %>
-          </div>
-          <%= render 'sign_with_site' %>
-        <% end %>
-      </div>
-
-      <ul class='breadcrumb'>
-        <% if Woodlock.authentication_services.nil? || (Woodlock.authentication_services && Woodlock.authentication_services.include?('password')) %>
-          <li><%= link_to t('devise.sign_up'), new_user_registration_path %></li>
-          <li><%= link_to t('devise.forgot_password'), new_password_path %></li>
-        <% end %>
-        <li><%= link_to t('devise.go_back'), root_path %></li>
-      </ul>
+<% if Woodlock.authentication_services.include?("password") %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, placeholder: "Email", autofocus: true %>
     </div>
-  </div>
-</div>
 
+    <div class="field">
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <small><%= f.label :remember_me %></small>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Sign in", class: "button-provider" %>
+    </div>
+  <% end %>
+
+  <% if controller_name != 'sessions' %>
+    <small><%= link_to "Sign in", new_session_path(resource_name) %></small><br />
+  <% end %>
+
+  <% if devise_mapping.registerable? && controller_name != "registrations" %>
+    <small><%= link_to "Sign up", new_registration_path(resource_name) %></small><br />
+  <% end %>
+
+  <% if devise_mapping.recoverable? && controller_name != "passwords" && controller_name != 'registrations' %>
+    <small><%= link_to "Forgot your password?", new_password_path(resource_name) %></small><br />
+  <% end %>
+
+  <% if devise_mapping.confirmable? && controller_name != "confirmations" %>
+    <small><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></small><br />
+  <% end %>
+
+  <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != "unlocks" %>
+    <small><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></small><br />
+  <% end %>
+<% end %>
+
+<hr/>
+<% if devise_mapping.omniauthable? %>
+  <p class="text-muted">Sign in with</p>
+  <% resource_class.omniauth_providers.each do |provider| %>
+    <% if Woodlock.authentication_services.include?(provider_name(provider)) %>
+      <%= link_to provider_name(provider).titleize, omniauth_authorize_path(resource_name, provider), class: "button-provider" %><br />
+    <% end %>
+  <% end %>
+<% end %>

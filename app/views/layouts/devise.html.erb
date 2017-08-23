@@ -2,14 +2,18 @@
 <html>
 <head>
   <title><%= Woodlock.site_name %></title>
-  <%= stylesheet_link_tag    'woodlock', media: 'all' %>
-  <%= javascript_include_tag 'woodlock', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "woodlock/woodlock", media: "all" %>
+  <%= javascript_include_tag "woodlock/woodlock", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <%= render 'layouts/facebook_oauth_script' %>
-  <div class="container container-margin-top">
-    <%= raw display_woodlock_flash_messages %>
+<body class="woodlock-body">
+  <div class="devise-container">
+    <div class="flash_messages">
+      <% if Woodlock.site_name %>
+        <p class="text-muted" style="font-size: 200%;"><%= Woodlock.site_name %></p>
+      <% end %>
+      <%= raw display_flash_messages %>
+    </div>
     <%= yield %>
   </div>
 </body>
