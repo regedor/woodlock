@@ -1,34 +1,58 @@
-#default
-#https://github.com/bbatsov/ruby-style-guide
-#https://github.com/bbatsov/rubocop/blob/master/config/default.yml
-
-#other style guides
-#https://github.com/thoughtbot/guides/tree/master/style#ruby
-#https://github.com/styleguide/ruby
+Rails:
+  Enabled: true
 
 AllCops:
-  RunRailsCops: true
-  Include:
-      - '**/Rakefile'
-      - '**/config.ru'
+  TargetRubyVersion: 2.4
   Exclude:
-    - 'test/dummy/**/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - !ruby/regexp /old_and_unused\.rb$/
+    - "bin/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - "test/dummy/bin/**/*"
+    - "test/dummy/config/**/*"
+    - "test/dummy/db/**/*"
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/integration/**/*"
 
 Documentation:
-    Enabled: false
+  Enabled: false
 
 Style/StringLiterals:
-  EnforcedStyle: single_quotes #double_quotes
+  EnforcedStyle: double_quotes
 
-Style/HashSyntax:
-  EnforcedStyle: ruby19 #hash_rockets
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
-Style/DotPosition:
-  EnforcedStyle: leading #trailing
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
 
-Style/SignalException:
-  EnforcedStyle: semantic #only_raise/only_fail
+Style/NumericPredicate:
+  Enabled: false
+
+Performance/Casecmp:
+  Enabled: false
+
+Style/VariableNumber:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+  SupportedStyles:
+    - with_first_parameter
+    - with_fixed_indentation
