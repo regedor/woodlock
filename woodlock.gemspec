@@ -16,8 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  # TODO: Devise needs rails 5.0.2. Check updates.
-  s.add_dependency "rails", "~> 5.0.2"
+  s.add_dependency "rails"
   s.add_dependency "devise"
   s.add_dependency "omniauth-facebook"
   s.add_dependency "omniauth-github"
