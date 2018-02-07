@@ -15,6 +15,7 @@ module Woodlock
       :site_email,
       :site_url,
       :authentication_services,
+      :hide_sign_up_forgot_password,
       :github_scope,
       # TODO: build mailer
       :welcome_email,

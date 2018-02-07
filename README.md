@@ -14,13 +14,14 @@ gem "woodlock", git: "https://github.com/regedor/woodlock.git"
 # config/initializers/woodlock.rb
 
 Woodlock.setup do |config|
-  config.site_name               = "My Site Name"
-  config.site_email              = "my_site_email@mail.com"
-  config.site_url                = "www.my_site_url.com"
-  config.authentication_services = ["password", "google", "facebook", "github"]
-  config.github_scope            = "user:email"
-  config.welcome_email           = false 
-  config.github_callback_url     = "http://localhost:3000/auth/github/callback"
+  config.site_name                    = "My Site Name"
+  config.site_email                   = "my_site_email@mail.com"
+  config.site_url                     = "www.my_site_url.com"
+  config.authentication_services      = ["password", "google", "facebook", "github"]
+  config.hide_sign_up_forgot_password = false
+  config.github_scope                 = "user:email"
+  config.welcome_email                = false 
+  config.github_callback_url          = "http://localhost:3000/auth/github/callback"
 end
 ```
 
