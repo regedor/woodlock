@@ -26,6 +26,12 @@ class Woodlock::User < ApplicationRecord
     end
   end
 
+
+  # Devise method override, so it uses ActiveJob to send mail notifications.
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   def full_name
     first_name.blank? || last_name.blank? ? "" : (first_name + " " + last_name).downcase.titleize
   end

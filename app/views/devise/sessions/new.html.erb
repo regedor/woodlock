@@ -1,3 +1,14 @@
+<% if devise_mapping.omniauthable? %>
+  <p class="text-muted">Sign in with</p>
+  <% resource_class.omniauth_providers.each do |provider| %>
+    <% if Woodlock.authentication_services.include?(provider_name(provider)) %>
+      <%= link_to provider_name(provider).titleize, omniauth_authorize_path(resource_name, provider), class: "button-provider" %><br />
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr/>
+
 <% if Woodlock.authentication_services.include?("password") %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -39,16 +50,6 @@
 
     <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != "unlocks" %>
         <small><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></small><br />
-    <% end %>
-  <% end %>
-<% end %>
-
-<hr/>
-<% if devise_mapping.omniauthable? %>
-  <p class="text-muted">Sign in with</p>
-  <% resource_class.omniauth_providers.each do |provider| %>
-    <% if Woodlock.authentication_services.include?(provider_name(provider)) %>
-      <%= link_to provider_name(provider).titleize, omniauth_authorize_path(resource_name, provider), class: "button-provider" %><br />
     <% end %>
   <% end %>
 <% end %>
