@@ -4,5 +4,5 @@ miguelregedor:
   github_username: regedor
   first_name: Miguel
   last_name: Regedor
-  updated_at: 1.hour.ago
-  created_at: 1.hour.ago
+  updated_at: <%= 1.hour.ago %>
+  created_at: <%= 1.hour.ago %>
