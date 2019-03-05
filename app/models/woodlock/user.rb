@@ -22,7 +22,7 @@ class Woodlock::User < ApplicationRecord
       user.oauth_after_find_or_create_actions(auth_parser)
     else
       user = Woodlock::User.new(email: auth_parser.email, password: Devise.friendly_token[0, 20])
-      # user.skip_confirmation!
+      user.skip_confirmation!
       user.save ? user.oauth_after_find_or_create_actions(auth_parser) : false
     end
   end
