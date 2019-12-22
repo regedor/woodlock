@@ -19,7 +19,13 @@ module Woodlock
       :github_scope,
       # TODO: build mailer
       :welcome_email,
-      :github_callback_url
+      :github_callback_url,
+      :omniauth_facebook_app_id,
+      :omniauth_facebook_app_secret,
+      :omniauth_google_client_id,
+      :omniauth_google_client_secret,
+      :omniauth_github_client_id,
+      :omniauth_github_client_secret
   end
 
   # allows the main app to pass the engine variables through the woodlock.rb initializer

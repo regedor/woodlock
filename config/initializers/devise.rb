@@ -281,19 +281,19 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.omniauth :facebook,
-    Rails.application.secrets.omniauth_facebook_app_id,
-    Rails.application.secrets.omniauth_facebook_app_secret,
+    Woodlock.omniauth_facebook_app_id,
+    Woodlock.omniauth_facebook_app_secret,
     scope: "email",
     info_fields: "email, name, first_name, last_name, gender"
 
   config.omniauth :google_oauth2,
-    Rails.application.secrets.omniauth_google_client_id,
-    Rails.application.secrets.omniauth_google_client_secret,
+    Woodlock.omniauth_google_client_id,
+    Woodlock.omniauth_google_client_secret,
     {}
 
   config.omniauth :github,
-    Rails.application.secrets.omniauth_github_client_id,
-    Rails.application.secrets.omniauth_github_client_secret,
+    Woodlock.omniauth_github_client_id,
+    Woodlock.omniauth_github_client_secret,
     scope: Woodlock.github_scope,
     callback_url: Woodlock.github_callback_url
 end
